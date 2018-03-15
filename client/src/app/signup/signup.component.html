@@ -1,0 +1,46 @@
+<div class="row align-items-center text-center">
+  <div class="col">
+    <div class="box-container">
+      
+      <label class="label-title">Sign up</label>
+
+        <table style="width:100%">
+          <tr>
+            <td style="text-align: center; width:100%">
+              <label class="label-txt">First name:</label>
+              <input class="input-txt" placeholder="first name" [(ngModel)]="user.firstName">
+            </td>
+          </tr>
+
+          <tr>
+            <td style="text-align: center; width:100%">
+              <label class="label-txt">Last name:</label>
+              <input class="input-txt" placeholder="last name" [(ngModel)]="user.lastName">
+            </td>
+          </tr>
+
+          <tr>
+            <td style="text-align: center; width:100%">
+              <label class="label-txt">User name:</label>
+              <input class="input-txt" placeholder="user name" [(ngModel)]="user.userName">
+            </td>
+          </tr>
+
+          <tr>
+            <td style="text-align: center; width:100%">
+              <label class="label-txt">Password:</label>
+              <input class="input-txt" placeholder="password" [(ngModel)]="user.password">
+            </td>
+          </tr>
+
+          <tr>
+            <td style="text-align: rcenteright; width:100%">
+            <button class="button-sign" (click)="signup()">Sign up</button>
+            <button class="button-sign" (click)="signin()">Sign in</button>
+          </td>
+        </tr>
+        </table>
+
+    </div>
+  </div>
+</div>

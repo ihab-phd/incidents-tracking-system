@@ -1,0 +1,35 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+
+  <div class="row align-items-center text-center">
+    <div class="col-2">
+      <div *ngIf="authService.isLoggedIn">
+        <label class="label-welcome">Welcome {{authService.user.userName}}</label>
+      </div>
+    </div>
+    <div class="col-8">
+        <label class="main-label">{{title}}</label>
+    </div>
+    <div class="col-2">
+      <div *ngIf="authService.isLoggedIn">
+        <button class="button-sign" (click)="signout()">Sign out</button>
+      </div>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+
+  <div class="row align-items-center text-center">
+    <div class="col">
+      <div class="label-message">
+        <label>{{this.msgService.messages}}</label>
+      </div>
+      <div>
+          <label class="label-logo">
+            @Maestro
+          </label>
+      </div>
+    </div>
+  </div>
+
+</div>

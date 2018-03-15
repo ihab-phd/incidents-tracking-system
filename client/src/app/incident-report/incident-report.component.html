@@ -1,0 +1,62 @@
+<div class="row align-items-center text-center">
+  <div class="col">
+    <div>
+      <div>Incident Details</div>
+      <div>
+
+        <div *ngIf="!this.isNew && this.authService.user.isTracker">
+          <label>User:</label>
+          <input placeholder="user" [(ngModel)]="incident.userName">
+        </div>
+        <div *ngIf="!this.authService.user.isTracker">
+          <label>Tracker:</label>
+          <input placeholder="tracker" [(ngModel)]="incident.trackerName">
+        </div>
+        <div>
+          <label>Date of incident:</label>
+          <input placeholder="date" [(ngModel)]="incident.date">
+        </div>
+        <div>
+          <label>Type:</label>
+          <select [(ngModel)]="incident.type">
+            <option value="Information Related">Information Related</option>
+            <option value="Non-Information Related">Non-Information Related</option>
+          </select>
+
+        </div>
+        <div>
+          <label>Short description:</label>
+          <input placeholder="short description" [(ngModel)]="incident.short_desc">
+        </div>
+        <div>
+          <label>Detailed description:</label>
+          <input placeholder="detailed description" [(ngModel)]="incident.detailed_desc">
+        </div>
+        <div>
+          <label>Cost:</label>
+          <input placeholder="cost" [(ngModel)]="incident.cost">
+        </div>
+        <div>
+          <label>Class:</label>
+          <select [(ngModel)]="incident.class">
+            <option value="Security Weakness">Security Weakness</option>
+            <option value="Minor Incident">Minor Incident</option>
+            <option value="Major Incident">Major Incident</option>
+          </select>
+        </div>
+        <div *ngIf="!this.isNew">
+          <label>Resolution:</label>
+          <input placeholder="resolution" [(ngModel)]="incident.resolution" [disabled]="this.isNew || !this.authService.user.isTracker">
+        </div>
+
+        <div>
+          <button *ngIf="isNew" (click)="newIncident()" type="button" class="btn-info" ngbButton>New</button>
+
+          <button *ngIf="!isNew" (click)="updateIncident()" type="button" class="btn-info" ngbButton>Save</button>
+
+          <button (click)="goBack()" type="button" class="btn-info" ngbButton>Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

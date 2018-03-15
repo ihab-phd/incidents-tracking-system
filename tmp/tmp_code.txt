@@ -1,0 +1,3 @@
+//"start": "db-migrate up --config server/src/database/config/database.json -e dev",
+//"start": "db-migrate create node-db-migrate",
+    

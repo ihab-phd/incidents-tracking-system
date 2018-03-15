@@ -1,0 +1,94 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    font-family: "Times New Roman", Times, serif;
+}
+
+.main-label {
+    margin: 10px;
+    width: 100%;
+    border: 3px solid rgb(12, 115, 146);
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(183, 213, 223);
+    font-size: 24px;
+}
+
+.box-container {
+    margin: auto;
+    width: 100%;
+    border: 3px solid rgb(12, 115, 146);
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(232, 237, 238);
+}
+
+.button-sign {
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    margin: 6px;
+    width: auto;
+    border: 2px solid rgb(40, 49, 92);
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgb(193, 217, 226);
+}
+
+.button-sign:hover {
+    color:  rgb(255, 255, 255);
+    background-color: rgba(18, 21, 189, 0.753);
+    left: .1em;
+}
+
+.label-txt {
+    margin: 2px;
+    width: auto;
+    border: 1px solid rgb(40, 49, 92);
+    border-radius: 3px;
+    padding: 3px;
+    color:  rgb(7, 7, 7);
+    background-color: rgb(193, 217, 226);
+}
+
+.input-txt {
+    margin: 2px;
+    width: auto;
+    border: 1px solid rgb(40, 49, 92);
+    border-radius: 3px;
+    padding: 3px;
+    color:  rgb(7, 7, 7);
+    background-color: rgb(255, 255, 255);
+}
+
+.label-title {
+    margin-bottom: 14px;
+    width: 30%;
+    border: 1px solid rgb(40, 49, 92);
+    border-radius: 3px;
+    padding: 3px;
+    color:  rgb(7, 7, 7);
+    background-color: rgb(252, 184, 158);
+    font-size: 20px
+}
+
+.label-welcome {
+    margin: 14px;
+    width: auto;
+    border: 1px solid rgb(40, 49, 92);
+    border-radius: 3px;
+    padding: 3px;
+    color:  rgb(7, 7, 7);
+    background-color: rgb(248, 192, 169);
+    font-size: 14px
+}
+
+.label-logo {
+    margin-top: 20px;
+    width: 100%;
+    border: 3px solid rgb(12, 115, 146);
+    border-radius: 12px;
+    padding: 3px;
+    color:  rgb(7, 7, 7);
+    background-color: rgb(193, 217, 226);
+    font-size: 20px
+}
