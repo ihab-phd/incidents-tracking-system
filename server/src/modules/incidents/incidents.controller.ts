@@ -27,6 +27,7 @@ export function getAll(req, res, next) {
                 res.status(200).json(incidents);
             }).catch(err => {
                 console.log(chalk.bold.bgGreen("incident.controller -> getAll -> tracker -> error"));
+                res.status(404).send('Error retreiving incidents');
             });
         } else {
             Incident.findAll({
@@ -41,11 +42,10 @@ export function getAll(req, res, next) {
                 raw: false
             }).then(incidents => {
                 console.log(chalk.bold.bgGreen("incident.controller -> getAll -> user -> success"));
-                //console.log(chalk.bold.bgGreen("data"+incidents[0].revisions[0].cost));
                 res.status(200).json(incidents);
             }).catch(err => {
                 console.log(chalk.bold.bgGreen("incident.controller -> getAll -> user -> error"));
-                return err;
+                res.status(404).send('Error retreiving incidents');
             });
         }
     } else {
@@ -61,7 +61,10 @@ export function getOne(req, res, next) {
                 id: req.param('id')
             }
         }).then(revision => {
-            res.json(revision);
+            res.status(200).json(revision);
+        }).catch(err => {
+            console.log(chalk.bold.bgGreen("incident.controller -> getOne -> error"));
+            res.status(404).send('Can\'t find the required revision');
         });
     } else {
         res.redirect('/signin');
@@ -72,10 +75,12 @@ export function getOne(req, res, next) {
 
 export function newIncident(req, res, next) {
     if (req.user) {
-        User.findOne({
-            userName: req.user.userName
-        }).then((user) => {
-            console.log(chalk.bold.bgGreen('incident.controller -> newIncident -> get tracker_id'));
+        console.log(chalk.bold.bgGreen('incident.controller -> newIncident -> trackerNAme:' + req.body.trackerName));
+        User.findOne({ where: {
+            userName: req.body.trackerName
+        }}).then((user) => {
+            console.log(chalk.bold.bgGreen('incident.controller -> newIncident -> get tracker_id -> ' + user.id));
+            console.log(chalk.bold.bgGreen('Tracker userName:' + user.userName + ' firstName:' + user.firstName));
             Incident.create({
                 user_id: req.user.id,
                 tracker_id: user.id
@@ -100,18 +105,22 @@ export function newIncident(req, res, next) {
                             }
                         }).then((incident) => {
                             console.log(chalk.bold.bgGreen('incident.controller -> newIncident -> update incident -> success'));
-                            res.json("ok")
+                            res.status(200).json('ok');
                         }).catch((err) => {
                             console.log(chalk.bold.bgGreen('incident.controller -> newIncident -> update incident -> error'));
+                            res.status(404).send({error: 'Error updating the incident'});
                         })
                 }).catch((err) => {
                     console.log(chalk.bold.bgGreen('incident.controller -> newIncident -> get revision -> error'));
+                    res.status(404).send({error: 'Error retreiving the related incident revision'});
                 });
             }).catch((err) => {
                 console.log(chalk.bold.bgGreen('incident.controller -> newIncident -> create incident -> error'));
+                res.status(404).send({error: 'Error creating the new incident'});
             })
         }).catch((err) => {
             console.log(chalk.bold.bgGreen('incident.controller -> newIncident -> get tracker_id -> error'));
+            res.status(404).send('tracker userName is incorrect');
         });
     } else {
         res.redirect('/signin');
@@ -140,12 +149,14 @@ export function updateIncident(req, res, next) {
                     }
                 }).then((incident) => {
                     console.log(chalk.bold.bgGreen('incident.controller -> updateIncident -> update incident -> success'));
-                    res.json("ok")
+                    res.status(200).json('ok');
                 }).catch((err) => {
                     console.log(chalk.bold.bgGreen('incident.controller -> updateIncident -> update incident -> error'));
+                    res.status(404).send('Error updating incident');
                 })
         }).catch( (err) => {
             console.log(chalk.bold.bgGreen('incident.controller -> updateIncident -> create revision -> error'));
+            res.status(404).send('Error creating the new revision');
         });
     } else {
         res.redirect('/signin');

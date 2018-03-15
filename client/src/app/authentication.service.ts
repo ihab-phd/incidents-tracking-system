@@ -25,6 +25,7 @@ export class AuthenticationService {
   private signin_url = '/api/signin';
   private signup_url = '/api/signup';
   private signout_url = '/api/signout';
+  private getUserName_url = '/api/getUserName';
 
   constructor(
     private http: HttpClient,
@@ -74,6 +75,17 @@ export class AuthenticationService {
     );
   }
 
+
+  getUserName(id): Observable<any> {
+    console.log('authentication.service -> getUserName');
+    const url = `${this.getUserName_url}/?id=${id}`;
+    return this.http.get<any>(url).pipe(
+      tap((user) => {
+        console.log('authentication.service -> getUserName -> success');
+      }),
+      catchError(this.handleError<any>('getUserName'))
+    );
+  }
 
   /**
    * Handle Http operation that failed.

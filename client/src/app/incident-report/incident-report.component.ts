@@ -16,6 +16,7 @@ export class IncidentReportComponent implements OnInit {
 
   private isNew: boolean;
   private rev_id: number;
+  private person_id: number;
   private incident: Incident = {
     incident_id: 0,
     userName: '',
@@ -48,8 +49,26 @@ export class IncidentReportComponent implements OnInit {
       this.rev_id = id;
       //this.getOne();
       this.updateGUI();
+      this.getUserName();
     }
   }
+
+  getUserName(): void {
+    this.authService.getUserName(this.person_id).subscribe(
+      (user) => {
+        console.log('incident-report.component -> getUserName -> success');
+        if(this.authService.user.isTracker){
+          this.incident.userName = user['userName'];
+        } else {
+          this.incident.trackerName = user['userName'];
+        }
+      },
+      (error) => {
+        console.log('incident-report.component -> getUserName -> Error');
+      }
+    );
+  }
+
 
   goBack(): void {
     this.msgService.messages = '';
@@ -68,6 +87,11 @@ export class IncidentReportComponent implements OnInit {
           this.incident.cost = revision['cost'];
           this.incident.class = revision['class'];
           this.incident.resolution = revision['resolution'];
+          if(this.authService.user.isTracker){
+            this.person_id = incident['user_id'];
+          } else {
+            this.person_id = incident['tracker_id'];
+          }
         }
       }
     }
@@ -75,35 +99,35 @@ export class IncidentReportComponent implements OnInit {
 
   newIncident(): void {
     this.msgService.messages = '';
-    var msg: string = 'The following information are missing: ';
+    var msg: string = 'Please enter the following information:<br>';
     var msgFlag: boolean = false;
 
     if (this.incident.trackerName.trim() == '') {
-      msg += 'tracker name ';
+      msg += 'tracker name<br>';
       msgFlag = true;
     }
     if (this.incident.date.toString().trim() == '') {
-      msg += 'date ';
+      msg += 'date<br>';
       msgFlag = true;
     }
     if (this.incident.type.trim() == '') {
-      msg += 'type ';
+      msg += 'type<br>';
       msgFlag = true;
     }
     if (this.incident.short_desc.trim() == '') {
-      msg += 'short description ';
+      msg += 'short description<br>';
       msgFlag = true;
     }
     if (this.incident.detailed_desc.trim() == '') {
-      msg += 'detailed description ';
+      msg += 'detailed description<br>';
       msgFlag = true;
     }
     if (this.incident.cost.toString().trim() == '') {
-      msg += 'cost ';
+      msg += 'cost<br>';
       msgFlag = true;
     }
     if (this.incident.class.trim() == '') {
-      msg += 'class ';
+      msg += 'class<br>';
       msgFlag = true;
     }
 
@@ -112,6 +136,7 @@ export class IncidentReportComponent implements OnInit {
     } else {
       this.incidentsService.newIncident(this.incident).subscribe(
         (res) => {
+          this.msgService.messages = '';
           this.router.navigate(['/main'])
           console.log('incident-report.component -> newIncident -> success');
         },
@@ -135,47 +160,47 @@ export class IncidentReportComponent implements OnInit {
 
   updateIncident(): void {
     this.msgService.messages = '';
-    var msg: string = 'The following information are missing: ';
+    var msg: string = 'Please enter the following information:<br>';
     var msgFlag: boolean = false;
 
     if (this.authService.user.isTracker) {
-      if (this.incident.trackerName.trim() == '') {
-        msg += 'user name ';
+      if (this.incident.userName.trim() == '') {
+        msg += 'user name<br>';
         msgFlag = true;
       }
       if (this.incident.resolution.trim() == '') {
-        msg += 'resolution ';
+        msg += 'resolution<br>';
         msgFlag = true;
       }
     } else {
-      if (this.incident.userName.trim() == '') {
-        msg += 'tracker name ';
+      if (this.incident.trackerName.trim() == '') {
+        msg += 'tracker<br>';
         msgFlag = true;
       }
     }
 
     if (this.incident.date.toString().trim() == '') {
-      msg += 'date ';
+      msg += 'date<br>';
       msgFlag = true;
     }
     if (this.incident.type.trim() == '') {
-      msg += 'type ';
+      msg += 'type<br>';
       msgFlag = true;
     }
     if (this.incident.short_desc.trim() == '') {
-      msg += 'short description ';
+      msg += 'short description<br>';
       msgFlag = true;
     }
     if (this.incident.detailed_desc.trim() == '') {
-      msg += 'detailed description ';
+      msg += 'detailed description<br>';
       msgFlag = true;
     }
     if (this.incident.cost.toString().trim() == '') {
-      msg += 'cost ';
+      msg += 'cost<br>';
       msgFlag = true;
     }
     if (this.incident.class.trim() == '') {
-      msg += 'class ';
+      msg += 'class<br>';
       msgFlag = true;
     }
 
@@ -184,6 +209,7 @@ export class IncidentReportComponent implements OnInit {
     } else {
       this.incidentsService.updateIncident(this.incident).subscribe(
         (res) => {
+          this.msgService.messages = '';
           this.router.navigate(['/main'])
           console.log('incident-report.component -> updateIncident -> success');
         },

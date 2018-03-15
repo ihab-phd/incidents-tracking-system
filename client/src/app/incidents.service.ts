@@ -123,7 +123,7 @@ export class IncidentsService {
     console.log('incidents.service -> newIncident');
     return this.http.post<string>(this.newIncident_url, incident).pipe(
       tap((res) => {
-        console.log('incident.service -> newIncident -> success' + res);
+        console.log('incident.service -> newIncident -> success -> ' + res);
       }),
       catchError(this.handleError<any>('newIncident'))
     );
@@ -153,7 +153,7 @@ export class IncidentsService {
           `Error code ${error.status}, ` +
           `detailes: ${error.error}`);
         this.msgService.messages = `Error code ${error.status}, ` +
-        `detailes: ${error.message}`
+        `detailes: ${error.error}`
       }
 
       // Let the app keep running by returning an empty result.

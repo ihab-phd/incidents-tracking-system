@@ -13,4 +13,5 @@ export default (app: express.Express): void => {
             res.status(200).send(req.user);
         });
     app.route('/api/signout').get(users.signout);
+    app.route('/api/getUserName').get(users.getUserName);
 };

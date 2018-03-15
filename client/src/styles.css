@@ -1,25 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 * {
     font-family: "Times New Roman", Times, serif;
+    text-align: center;
 }
 
-.main-label {
-    margin: 10px;
-    width: 100%;
-    border: 3px solid rgb(12, 115, 146);
-    border-radius: 5px;
+.header {
     padding: 10px;
     background-color: rgb(183, 213, 223);
-    font-size: 24px;
 }
 
-.box-container {
-    margin: auto;
-    width: 100%;
-    border: 3px solid rgb(12, 115, 146);
-    border-radius: 5px;
-    padding: 10px;
+.body {
+    padding-top: 20px;
+    padding-bottom: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
     background-color: rgb(232, 237, 238);
+}
+
+.footer {
+    padding: 10px;
+    background-color: rgb(193, 217, 226);
 }
 
 .button-sign {
@@ -40,6 +40,24 @@
     left: .1em;
 }
 
+.input-txt {
+    width: auto;
+    border: 1px solid rgb(40, 49, 92);
+    border-radius: 3px;
+    padding: 3px;
+    color:  rgb(7, 7, 7);
+    background-color: rgb(255, 255, 255);
+}
+
+.label-main {
+    width: auto;
+    border: 3px solid rgb(12, 115, 146);
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(183, 213, 223);
+    font-size: 24px;
+}
+
 .label-txt {
     margin: 2px;
     width: auto;
@@ -50,19 +68,9 @@
     background-color: rgb(193, 217, 226);
 }
 
-.input-txt {
-    margin: 2px;
-    width: auto;
-    border: 1px solid rgb(40, 49, 92);
-    border-radius: 3px;
-    padding: 3px;
-    color:  rgb(7, 7, 7);
-    background-color: rgb(255, 255, 255);
-}
-
 .label-title {
     margin-bottom: 14px;
-    width: 30%;
+    width: 40%;
     border: 1px solid rgb(40, 49, 92);
     border-radius: 3px;
     padding: 3px;
@@ -71,8 +79,19 @@
     font-size: 20px
 }
 
-.label-welcome {
+.label-title-2 {
     margin: 14px;
+    width: auto;
+    border: 1px solid rgb(40, 49, 92);
+    border-radius: 3px;
+    padding: 3px;
+    color:  rgb(7, 7, 7);
+    background-color: rgb(252, 206, 188);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.label-welcome {
     width: auto;
     border: 1px solid rgb(40, 49, 92);
     border-radius: 3px;
@@ -83,12 +102,42 @@
 }
 
 .label-logo {
-    margin-top: 20px;
-    width: 100%;
+    margin: 10px;
+    width: auto;
     border: 3px solid rgb(12, 115, 146);
     border-radius: 12px;
-    padding: 3px;
+    padding: 4px;
     color:  rgb(7, 7, 7);
     background-color: rgb(193, 217, 226);
-    font-size: 20px
+    font-size: 16px
+}
+
+.label-message {
+    margin-top: 10px;
+    width: auto;
+    border: 2px solid rgb(12, 115, 146);
+    border-radius: 2px;
+    padding: 10px;
+    color:  rgb(146, 3, 3);
+    background-color: rgb(193, 217, 226);
+    font-size: 18px;
+}
+
+.table-statis {
+    width: 100%;
+    border: 2px solid rgb(12, 115, 146);
+    border-radius: 2px;
+    padding: 10px;
+    color:  rgb(11, 1, 37);
+    font-size: 16px;
+}
+
+.table-incidents {
+    margin-top: 10px;
+    width: 100%;
+    border: 2px solid rgb(12, 115, 146);
+    border-radius: 2px;
+    padding: 10px;
+    color:  rgb(11, 1, 37);
+    font-size: 16px;
 }

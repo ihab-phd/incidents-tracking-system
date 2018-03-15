@@ -27,28 +27,27 @@ export class SignupComponent implements OnInit {
     private msgService: MessagesService) { }
 
   ngOnInit() {
-    this.msgService.messages = '';
   }
 
   signup(): void {
     console.log('signup.component -> signup');
-    var msg: string = 'The following information are missing: ';
+    var msg: string = 'Please enter the following information:<br>';
     var msgFlag: boolean = false;
 
     if (this.user.firstName.trim() == '') {
-      msg += 'first name ';
+      msg += 'first name<br>';
       msgFlag = true;
     }
     if (this.user.lastName.trim() == '') {
-      msg += 'last name ';
+      msg += 'last name<br>';
       msgFlag = true;
     }
     if (this.user.userName.trim() == '') {
-      msg += 'user name ';
+      msg += 'user name<br>';
       msgFlag = true;
     }
     if (this.user.password.trim() == '') {
-      msg += 'password';
+      msg += 'password<br>';
       msgFlag = true;
     }
 
@@ -60,6 +59,7 @@ export class SignupComponent implements OnInit {
           (res) => {
             this.router.navigate(['/signin'])
             console.log('signup.component -> signup -> success');
+            this.msgService.messages = "User created successfully";
           },
           (error) => {
             console.log("signup.component -> signup -> Error")

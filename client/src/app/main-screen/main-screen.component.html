@@ -1,78 +1,130 @@
-<div class="row align-items-center text-center" *ngIf="this.authService.isLoggedIn">
-  <div class="box-container">
-    <table style="width:100%">
-      <tr>
-        <th style="text-align: center; width:30%">
-          <label>Number of incidents </label>
-        </th>
-        <th style="text-align: center; width:30%">
-          <label>Incidents numbers by type</label>
-        </th>
-        <th style="text-align: center; width:30%">
-          <label>Incidents numbers by class</label>
-        </th>
-      </tr>
-      <tr>
-        <td style="text-align: center; width:30%">
-          <label>Total Incidents:</label>
-          <label>{{tot_incidents}}</label>
-        </td>
+<table class="table-statis">
+  <tr>
+    <th style="text-align: center; width:30%">
+    </th>
+    <th style="text-align: center; width:40%">
+      <label class="label-title-2">Statistics</label>
+    </th>
+    <th style="text-align: center; width:30%">
+    </th>
+  </tr>
 
-        <td style="text-align: center; width:30%">
-          <div>
-            <label>Total Information-Related:</label>
-            <label>{{tot_info_related}}</label>
-          </div>
-          <div>
-            <label>Total Non Information-Related:</label>
-            <label>{{tot_nonInfo_related}}</label>
-          </div>
-        </td>
+  <tr>
+    <th style="text-align: center; width:30%">
+      <label>Number of incidents </label>
+    </th>
+    <th style="text-align: center; width:40%">
+      <label>Incidents numbers by type</label>
+    </th>
+    <th style="text-align: center; width:30%">
+      <label>Incidents numbers by class</label>
+    </th>
+  </tr>
 
+  <tr>
+    <td style="text-align: center; width:30%">
+      <label>Total Incidents:</label>
+      <label>{{tot_incidents}}</label>
+    </td>
 
-        <td style="text-align: center; width:30%">
-          <div>
-
-            <label>Total Security Weakness:</label>
-            <label>{{tot_security}}</label>
-          </div>
-
-          <div>
-            <label>Total Minor Incidents:</label>
-            <label>{{tot_minor}}</label>
-          </div>
-          <div>
-            <label>Total Major Incidents:</label>
-            <label>{{tot_major}}</label>
-          </div>
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>
-
-<div class="row align-items-center text-center" *ngIf="this.authService.isLoggedIn">
-  <div class="col">
-    <div class="box-container">
+    <td style="text-align: center; width:40%">
       <div>
-        <label>Incidents:</label>
+        <label>Total Information-Related:</label>
+        <label>{{tot_info_related}}</label>
       </div>
       <div>
-        <ul>
-          <div>
-            <li *ngFor="let incident of this.incidentsService.incidents_revs">
-              <a routerLink="/incident/{{incident['revisions'][0]['id']}}">
-                <label>{{incident['revisions'][0]['date']}}</label>
-                <label>{{incident['revisions'][0]['type']}}</label>
-                <label>{{incident['revisions'][0]['short_desc']}}</label>
-              </a>
-            </li>
-          </div>
-        </ul>
+        <label>Total Non Information-Related:</label>
+        <label>{{tot_nonInfo_related}}</label>
       </div>
+    </td>
+
+    <td style="text-align: center; width:30%">
       <div>
-        <button *ngIf="this.authService.isLoggedIn && !authService.user.isTracker" (click)="newIncident()">Report an Incident</button>
+        <label>Total Security Weakness:</label>
+        <label>{{tot_security}}</label>
       </div>
-    </div>
-  </div>
+
+      <div>
+        <label>Total Minor Incidents:</label>
+        <label>{{tot_minor}}</label>
+      </div>
+
+      <div>
+        <label>Total Major Incidents:</label>
+        <label>{{tot_major}}</label>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<table class="table-incidents">
+  <tr>
+    <th style="text-align: center; width:14%">
+    </th>
+    <th style="text-align: center; width:14%">
+    </th>
+    <th style="text-align: center; width:14%">
+    </th>
+    <th style="text-align: center; width:14%">
+      <label class="label-title-2">Incidents</label>
+    </th>
+    <th style="text-align: center; width:14%">
+    </th>
+    <th style="text-align: center; width:14%">
+    </th>
+    <th style="text-align: center; width:14%">
+    </th>
+  </tr>
+
+  <tr>
+    <th style="text-align: center; width:14%">
+      <label>Open</label>
+    </th>
+    <th style="text-align: center; width:14%">
+      <label>Date</label>
+    </th>
+    <th style="text-align: center; width:14%">
+      <label>Type</label>
+    </th>
+    <th style="text-align: center; width:14%">
+      <label>Short Description</label>
+    </th>
+    <th style="text-align: center; width:14%">
+      <label>Detailed Description</label>
+    </th>
+    <th style="text-align: center; width:14%">
+      <label>Cost</label>
+    </th>
+    <th style="text-align: center; width:14%">
+      <label>Class</label>
+    </th>
+  </tr>
+
+  <tr *ngFor="let incident of this.incidentsService.incidents_revs">
+    <td style="text-align: center; width:14%">
+      <button class = "button-sign" routerLink="/incident/{{incident['revisions'][0]['id']}}">Open</button>
+    </td>
+    <td style="text-align: center; width:14%">
+      <label>{{incident['revisions'][0]['date']}}</label>
+    </td>
+    <td style="text-align: center; width:14%">
+      <label>{{incident['revisions'][0]['type']}}</label>
+    </td>
+    <td style="text-align: center; width:14%">
+      <label>{{incident['revisions'][0]['short_desc']}}</label>
+    </td>
+    <td style="text-align: center; width:14%">
+      <label>{{incident['revisions'][0]['detailed_desc']}}</label>
+    </td>
+    <td style="text-align: center; width:14%">
+      <label>{{incident['revisions'][0]['cost']}}</label>
+    </td>
+    <td style="text-align: center; width:14%">
+      <label>{{incident['revisions'][0]['class']}}</label>
+    </td>
+  </tr>
+</table>
+
+<div>
+  <button class = "button-sign" *ngIf="this.authService.isLoggedIn && !authService.user.isTracker" (click)="newIncident()">Report an Incident</button>
 </div>

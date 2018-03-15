@@ -1,40 +1,35 @@
-<div class="row align-items-center text-center">
-  <div class="col">
-    <div class="box-container">
+<label class="label-title">
+  sign in
+</label>
 
-      <label class="label-title">sign in</label>
-      <table style="width:100%">
-        <tr>
-          <td style="text-align: right; width:60%">
-            <label class="label-txt">User name:</label>
-            <input class="input-txt" placeholder="user name" [(ngModel)]="user.userName">
-          </td>
-          <td style="text-align: right; width:40%">
+<table style="width:100%">
+  <tr>
+    <td style="text-align: right; width:60%">
+      <label class="label-txt">User name:</label>
+      <input class="input-txt" placeholder="user name" [(ngModel)]="user.userName">
+    </td>
+    <td style="text-align: right; width:40%">
 
-          </td>
-        </tr>
+    </td>
+  </tr>
 
-        <tr>
-          <td style="text-align: right; width:60%">
-            <label class="label-txt">Password:</label>
-            <input class="input-txt" placeholder="password" [type]="inputType" [(ngModel)]="user.password">
-          </td>
-          <td style="text-align: left; width:40%">
-            <button class="button-sign" (click)="switchInputPass()">{{showHideTxt}}</button>
-          </td>
-        </tr>
-        
-        <tr>
-          <td style="text-align: right; width:60%">
-            <button class="button-sign" (click)="signin()">Sign in</button>
-            <button class="button-sign" (click)="signup()">Sign up</button>
-          </td>
-          <td style="text-align: right; width:40%">
+  <tr>
+    <td style="text-align: right; width:60%">
+      <label class="label-txt">Password:</label>
+      <input class="input-txt" placeholder="password" [type]="inputType" [(ngModel)]="user.password">
+    </td>
+    <td style="text-align: left; width:40%">
+      <button class="button-sign" (click)="switchInputPass()">{{showHideTxt}}</button>
+    </td>
+  </tr>
 
-          </td>
-        </tr>
-      </table>
+  <tr>
+    <td style="text-align: right; width:60%">
+      <button class="button-sign" (click)="signin()">Sign in</button>
+      <button class="button-sign" (click)="signup()">Sign up</button>
+    </td>
+    <td style="text-align: right; width:40%">
 
-    </div>
-  </div>
-</div>
+    </td>
+  </tr>
+</table>

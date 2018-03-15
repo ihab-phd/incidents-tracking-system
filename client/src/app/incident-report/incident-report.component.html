@@ -1,62 +1,103 @@
-<div class="row align-items-center text-center">
-  <div class="col">
-    <div>
-      <div>Incident Details</div>
-      <div>
+<label class="label-title-2">Incident Details</label>
 
-        <div *ngIf="!this.isNew && this.authService.user.isTracker">
-          <label>User:</label>
-          <input placeholder="user" [(ngModel)]="incident.userName">
-        </div>
-        <div *ngIf="!this.authService.user.isTracker">
-          <label>Tracker:</label>
-          <input placeholder="tracker" [(ngModel)]="incident.trackerName">
-        </div>
-        <div>
-          <label>Date of incident:</label>
-          <input placeholder="date" [(ngModel)]="incident.date">
-        </div>
-        <div>
-          <label>Type:</label>
-          <select [(ngModel)]="incident.type">
-            <option value="Information Related">Information Related</option>
-            <option value="Non-Information Related">Non-Information Related</option>
-          </select>
+<table class="table-incidents">
+  <tr *ngIf="!this.isNew && this.authService.user.isTracker">
+    <td style="width: 50%; text-align: right">
+      <label class="label-txt">User:</label>
+    </td>
+    <td style="width: 50%; text-align: left">
+      <input class="input-txt" placeholder="user" [(ngModel)]="incident.userName" disabled="disabled">
+    </td>
+  </tr>
 
-        </div>
-        <div>
-          <label>Short description:</label>
-          <input placeholder="short description" [(ngModel)]="incident.short_desc">
-        </div>
-        <div>
-          <label>Detailed description:</label>
-          <input placeholder="detailed description" [(ngModel)]="incident.detailed_desc">
-        </div>
-        <div>
-          <label>Cost:</label>
-          <input placeholder="cost" [(ngModel)]="incident.cost">
-        </div>
-        <div>
-          <label>Class:</label>
-          <select [(ngModel)]="incident.class">
-            <option value="Security Weakness">Security Weakness</option>
-            <option value="Minor Incident">Minor Incident</option>
-            <option value="Major Incident">Major Incident</option>
-          </select>
-        </div>
-        <div *ngIf="!this.isNew">
-          <label>Resolution:</label>
-          <input placeholder="resolution" [(ngModel)]="incident.resolution" [disabled]="this.isNew || !this.authService.user.isTracker">
-        </div>
+  <tr *ngIf="!this.authService.user.isTracker">
+    <td style="width: 50%; text-align: right">
+      <label class="label-txt">Tracker:</label>
+    </td>
+    <td style="width: 50%; text-align: left">
+      <input class="input-txt" placeholder="tracker" [(ngModel)]="incident.trackerName"  [disabled]="!this.isNew">
+    </td>
+  </tr>
 
-        <div>
-          <button *ngIf="isNew" (click)="newIncident()" type="button" class="btn-info" ngbButton>New</button>
+  <tr>
+    <td style="width: 50%; text-align: right">
+      <label class="label-txt">Date of incident:</label>
+    </td>
+    <td style="width: 50%; text-align: left">
+      <input type="date" class="input-txt" [(ngModel)]='incident.date'/>
+    </td>
+  </tr>
 
-          <button *ngIf="!isNew" (click)="updateIncident()" type="button" class="btn-info" ngbButton>Save</button>
+  <tr>
+    <td style="width: 50%; text-align: right">
+      <label class="label-txt">Type:</label>
+    </td>
+    <td style="width: 50%; text-align: left">
+      <select [(ngModel)]="incident.type">
+        <option value="Information Related">Information Related</option>
+        <option value="Non-Information Related">Non-Information Related</option>
+      </select>
+    </td>
+  </tr>
 
-          <button (click)="goBack()" type="button" class="btn-info" ngbButton>Back</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  <tr>
+    <td style="width: 50%; text-align: right">
+      <label class="label-txt">Short description:</label>
+    </td>
+    <td style="width: 50%; text-align: left">
+      <input class="input-txt" placeholder="short description" [(ngModel)]="incident.short_desc">
+    </td>
+  </tr>
+
+  <tr>
+    <td style="width: 50%; text-align: right">
+      <label class="label-txt">Detailed description:</label>
+    </td>
+    <td style="width: 50%; text-align: left">
+      <input class="input-txt" placeholder="detailed description" [(ngModel)]="incident.detailed_desc">
+    </td>
+  </tr>
+
+  <tr>
+    <td style="width: 50%; text-align: right">
+      <label class="label-txt">Cost:</label>
+    </td>
+    <td style="width: 50%; text-align: left">
+      <input class="input-txt" placeholder="cost" [(ngModel)]="incident.cost">
+    </td>
+  </tr>
+
+  <tr>
+    <td style="width: 50%; text-align: right">
+      <label class="label-txt">Class:</label>
+    </td>
+    <td style="width: 50%; text-align: left">
+      <select [(ngModel)]="incident.class">
+        <option value="Security Weakness">Security Weakness</option>
+        <option value="Minor Incident">Minor Incident</option>
+        <option value="Major Incident">Major Incident</option>
+      </select>
+    </td>
+  </tr>
+
+  <tr *ngIf="!this.isNew">
+    <td style="width: 50%; text-align: right">
+      <label class="label-txt">Resolution:</label>
+    </td>
+    <td style="width: 50%; text-align: left">
+      <input class="input-txt" placeholder="resolution" [(ngModel)]="incident.resolution" [disabled]="this.isNew || !this.authService.user.isTracker">
+    </td>
+  </tr>
+
+  <tr>
+    <td style="width: 50%; text-align: right">
+      <button class="button-sign" *ngIf="isNew" (click)="newIncident()">New</button>
+
+      <button class="button-sign" *ngIf="!isNew" (click)="updateIncident()">Save</button>
+    </td>
+    <td style="width: 50%; text-align: left">
+      <button class="button-sign" (click)="goBack()">Back</button>
+    </td>
+  </tr>
+
+</table>

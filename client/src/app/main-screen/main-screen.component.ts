@@ -25,7 +25,6 @@ export class MainScreenComponent implements OnInit {
     private msgService: MessagesService) { }
 
   ngOnInit() {
-    this.msgService.messages = '';
     if (this.authService.isLoggedIn) {
       this.getAll();
     }
