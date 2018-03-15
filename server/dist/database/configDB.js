@@ -15,10 +15,20 @@ function default_1() {
         return user_1.default.create({
             firstName: 'Kyle',
             lastName: 'hisLast',
-            userName: 'admin',
+            userName: 'kyle',
             password: pass,
             isTracker: true,
             role: 'Director of Technology'
+        });
+    }).then((user) => {
+        const pas = auth_1.default('admin');
+        return user_1.default.create({
+            firstName: 'Tyler',
+            lastName: 'hisLast',
+            userName: 'tyler',
+            password: pas,
+            isTracker: true,
+            role: 'Director of Quality'
         });
     }).then((user) => {
         const pas = auth_1.default('p1');
@@ -26,6 +36,16 @@ function default_1() {
             firstName: 'i1',
             lastName: 'm1',
             userName: 'u1',
+            password: pas,
+            isTracker: false,
+            role: 'User'
+        });
+    }).then((user) => {
+        const pas = auth_1.default('p2');
+        return user_1.default.create({
+            firstName: 'i2',
+            lastName: 'm2',
+            userName: 'u2',
             password: pas,
             isTracker: false,
             role: 'User'
